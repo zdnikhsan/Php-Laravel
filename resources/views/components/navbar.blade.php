@@ -32,11 +32,49 @@
         <a href="/pesanan" class="d-flex align-items-center p-2 rounded text-light px-2 text-decoration-none" onmouseover="this.style.backgroundColor='#495057';" onmouseout="this.style.backgroundColor='';">
           <i class="bi bi-card-list pe-2"></i>
           Pesanan
-        </a>
-        <a href="/manage" class="d-flex align-items-center p-2 rounded text-light px-2 text-decoration-none" onmouseover="this.style.backgroundColor='#495057';" onmouseout="this.style.backgroundColor='';">
-          <i class="bi bi-kanban-fill pe-2"></i>
-          Manajemen
-        </a>
+        </a>       
+        <div class="dropdown">
+          <button class="btn btn-dark dropdown-toggle px-2 w-100 text-start" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="bi bi-grid pe-1"></i> Manajemen
+          </button>
+          <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton" style="border-radius: 8px;">
+          @can('manage-admin')
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="/admin" 
+              style="border-radius: 8px; padding: 10px 15px; margin: 2px 0; transition: background-color 0.2s; display: block;">
+              <i class="bi bi-person-check" style="margin-right: 8px;"></i> Admin
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="/keuangan" 
+              style="border-radius: 8px; padding: 10px 15px; margin: 2px 0; transition: background-color 0.2s; display: block;">
+              <i class="bi bi-cash-coin" style="margin-right: 8px;"></i> Keuangan
+            </a>
+          </li>
+          @endcan
+          <li>
+            <a class="dropdown-item d-flex align-items-center" href="/manage" 
+               style="border-radius: 8px; padding: 10px 15px; margin: 2px 0; transition: background-color 0.2s; display: block;">
+              <i class="bi bi-people" style="margin-right: 8px;"></i> Pengguna
+            </a>
+          </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="/showInvent" 
+              style="border-radius: 8px; padding: 10px 15px; margin: 2px 0; transition: background-color 0.2s; display: block;">
+              <i class="bi bi-bag-check-fill" style="margin-right: 8px;"></i> Persediaan
+            </a>
+          </li>
+        </ul>
+      </div>
+        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+          @csrf
+          <button type="submit" class="btn btn-dark px-2 w-100 text-start text-decoration-none" onmouseover="this.style.backgroundColor='#495057';" onmouseout="this.style.backgroundColor='';">
+            <i class="bi bi-door-closed-fill"></i>
+            Logout
+          </button>         
+      </form>
+        
+        
       </ul>
     </div>
 

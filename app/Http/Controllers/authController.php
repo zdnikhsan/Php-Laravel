@@ -23,8 +23,10 @@ class authController extends Controller
         }
     }
 
-    function logout(){
+    function logout(Request $request){
         Auth::logout();
-        return redirect()->route('/');
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('showLandingPage');
     }
 }
